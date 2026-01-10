@@ -30,7 +30,7 @@ const server = new NanoProxyServer(express(), {
        List of enabled websites that can bypass server CORS restriction.
        CORS is not enforced when server is ran in development-mode.
     */
-    URL_WHITE_LIST: ['https://creeper.banano.cc/', 'https://thebananostand.com/'],
+    URL_WHITE_LIST: ['https://creeper.banano.cc', 'https://thebananostand.com'],
 
     /*
      * Optional function ran to security-check incoming requests.
