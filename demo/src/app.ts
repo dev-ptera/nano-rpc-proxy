@@ -1,7 +1,7 @@
 import * as express from 'express';
 import { NextFunction, Request, Response } from 'express';
 import { NanoProxyServer } from '@dev-ptera/nano-rpc-proxy';
-import { authKeys } from './auth-keys';
+// import { authKeys } from './auth-keys';
 
 const args = process.argv.slice(2);
 const path = 'banano-rpc';
@@ -37,19 +37,6 @@ const server = new NanoProxyServer(express(), {
      * Runs after the CORS filter.
      */
     REQUEST_FILTER: (req: Request, res: Response, next: NextFunction): void => {
-        const origin = req.get('origin');
-        if (isProduction && !origin) {
-            // Authorization Required
-            const auth = req.get('authorization');
-            if (!authKeys.has(auth)) {
-                res.status(401).send(
-                    JSON.stringify({
-                        error: 'unauthorized',
-                    })
-                );
-                return;
-            }
-        }
         next();
     },
 
